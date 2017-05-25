@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<head>
+
+ <link rel="stylesheet" type="text/css" href="bootstrap.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+function pause_earth(){
+    var elem=document.getElementById("earth-orbit");
+    elem.classList.add("pause-animate");
+}
+function run_earth(){
+    var elem=document.getElementById("earth-orbit");
+    elem.classList.add("restart-animate");
+}
+function reset_earth(){
+    var elem=document.getElementById("earth-orbit");
+    elem.classList.add("reset-animate");
+//  run_earth();
+}
+</script>
+
+<style type="text/css">
+
+
+body{
+	background-image: url("bg2.jpeg");
+
+}
+#system{
+    width:1000px;
+    margin:auto;
+    height:600px;
+}
+#sun{
+  width:100px;
+  height:100px;
+    margin-top:250px;
+    margin-left:450px;
+    position:absolute;
+  border-radius:100%;
+}
+#merc{
+    position:absolute;
+    height:50px;
+    width:50px;
+  border-radius:100%;
+}
+#venus{
+    position:absolute;
+    margin-top: 50px ; 
+    height:50px;
+    width:50px;
+  border-radius:100%;
+}
+#earth{
+    position:absolute;
+    margin: 30;
+    height:50px;
+    width:50px;
+  border-radius:100%;
+}
+
+
+#venus-orbit{
+    position:absolute;
+    margin: 75px ;
+    width:350px;
+    height:350px;
+    border:1px dotted black;
+    border-radius:100%;
+    -webkit-animation:spin 10s linear infinite;
+    animation:spin 10s linear infinite;
+    
+}
+#merc-orbit{
+    position:absolute;
+   margin: 75px ;
+    width:200px;
+    height:200px;
+    border:1px dotted black;
+    border-radius:100%;
+    -webkit-animation:spin 10s linear infinite;
+    animation:spin 10s linear infinite;
+    
+}
+
+
+
+
+#earth-orbit{
+    position:absolute;
+    margin-top:50px;
+    margin-left:250px;
+    width:500px;
+    height:500px;
+    border:1px dotted black;
+    border-radius:100%;
+    -webkit-animation:spin 10s linear infinite;
+    animation:spin 15s linear infinite;
+    
+}
+
+
+.pause-animate {
+-webkit-animation-play-state: paused !important;
+animation-play-state: paused !important;
+}
+.reset-animate {
+-webkit-animation: spin 10s linear infinite!important;
+animation: spin 15s linear infinite!important;
+}
+.restart-animate {
+-webkit-animation-play-state: running !important;
+animation-play-state: running !important;
+}
+
+
+@-webkit-keyframes spin{
+100%{
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+}
+}
+@keyframes spin{
+100%{
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+}
+
+
+
+</style>
+
+
+
+<body>
+
+
+  
+
+
+
+<div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <i>Mercury</i> <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li onclick="reset_earth()" >Start</li>
+        <li onclick="pause_earth()" > Stop</li>
+        <li><b>Reset</b></li>
+
+      </ul>
+    </div>
+
+<div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <i>Venus</i> <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li onclick="reset_earth()" >Start</li>
+        <li onclick="pause_earth()" >Stop</li>
+        <li><b>Reset</b></li>
+      </ul>
+    </div>
+ 
+<div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <i>Earth</i> <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li onclick="reset_earth()">Start</li>
+     <li onclick="pause_earth()">Stop</li>
+     <li onclick="reset_earth()"><b>Reset</b></li>
+    </ul>
+  </div>
+ 
+
+<div id="system">
+
+    <img src="sun1.jpeg" id="sun">
+    <div id="earth-orbit">
+        <img src="pl11.jpeg" id="earth" title="Earth">
+            <div id="venus-orbit">
+        <img src="pl13.jpeg" id="venus" title="Venus">
+            <div id="merc-orbit">
+        <img src="pl2.jpeg" id="merc" title="Mercury">
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+ 
+</a></body>
