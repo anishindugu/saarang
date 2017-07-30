@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Open Weather API</title>
+
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="bootstrap.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="stylepage.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                    
+</head>
+
+<body >
+    <div ng-app = "MyApp" ng-controller = "WeatCtrl">
+      <form name="form">
+        <h3 id="heading">Open Weather API</h3>
+         <div class="input-group" >
+            <input type="text" class="form-control" placeholder = "Enter Your City Name"  id = "inputbox" ng-model = "cityName">
+            <div class="input-group-btn">
+            <button class="btn btn-default" type="submmit" ng-click = "funGet()" id="mainbutton"><i class="glyphicon glyphicon-search"></i> Get Details </button>
+            </div>
+         </div>
+          <div id="weathercontent"  ng-show="form.$submitted" >
+              <h3 id="midhd" >Showing Weather Report of <b id="cityname" >  {{ cityName | uppercase }} </b> </h3>
+              <h5 > at  {{dale | date : "dd/MM/yyyy"}}  </br>  {{dale | date : "HH:mm:ss"}} </h5>
+              <p > <img src="http://openweathermap.org/img/w/{{ imgCode }}.png"> </p>
+              <h5>{{desc}}</h5>
+              <h3  class="tshow" > {{ tmp | number : 1 }}°C <sub>{{(tmp)*9/5 + 32  | number: 1}}°F</sub> </h3>
+          </div>
+
+          <div id="container">
+
+              <div id="first" ng-show="form.$submitted">
+               <h3  id="temprange" >Temparature Range</h3> 
+               <h4 class="csstyp">Min Temp :  {{minTemp | number : 1 }}°C <sub> {{(minTempF)*9/5 + 32}}°F </sub> </h4>
+               <h4 class="csstyp"> Max Temp :  {{maxTemp | number : 1 }}°C <sub> {{(maxTempF)*9/5 + 32}}°F </sub> </h4>
+              </div >
+              <div id="second" ng-show="form.$submitted" >
+                <h3 id="sunrange" > Sunrise/Sunset </h3>
+               <h4 class="csstyp">Sunrises at : {{sunrise | date : "shortTime"  }} </h4>
+               <h4 class="csstyp">Sunsets at : {{sunrise | date :  "shortTime" }} </h4>
+              </div>
+              <div id="third" ng-show="form.$submitted" >
+               <h3 id="windrange" >  About Wind </h3>
+               <h4 class="csstyp"> Wind speed is {{windspeed }}  </h4>
+               <h4 class="csstyp"> Humidity is {{humidity}} </h4>
+               <h4 class="csstyp">Pressure is {{pressure}} </h4>
+             </div>
+              <div id="clear"></div>
+          </div>
+        </form>
+      </div>
+<script type="text/javascript">
+  
+     var app = angular.module('MyApp', []);
+      app.controller('WeatCtrl',['$scope' , '$http' , function($scope, $http){
+   
+    $scope.cityName = "London";
+
+    $scope.funGet = function(){
+         var url = "http://api.openweathermap.org/data/2.5/weather?q="+$scope.cityName + "&appid=ae839ae6ae40628c2755d95a2b2570d8";
+        $http.get(url).then(function(response){
+          console.log(url);
+          console.log(response);
+            $scope.imgWidth = 150;
+            $scope.imgHeight = 150;
+            $scope.ct = response.data.name;
+            $scope.tmp = response.data.main.temp - 272.15;
+            $scope.minTemp = response.data.main.temp_min - 272.15;
+            $scope.minTempF = response.data.main.temp_min - 272.15  ;
+            $scope.maxTemp = response.data.main.temp_max - 272.15;            
+            $scope.maxTempF = response.data.main.temp_max - 272.15;
+            $scope.imgCode = response.data.weather[0].icon;
+            $scope.desc = response.data.weather[0].description ;
+            $scope.dale = new Date() ;
+            $scope.sunrise = response.data.sys.sunrise ;
+            $scope.sunset = response.data.sys.sunset ;
+            $scope.windspeed = response.data.wind.speed*3.6 + " km/hr" ;
+            $scope.humidity = response.data.main.humidity + " %" ;
+            $scope.pressure = response.data.main.pressure + " hPa" ;
+        });
+     }
+}]);
+
+</script>
+     </body>
+</html>

@@ -1,0 +1,208 @@
+               body{
+                    background-image: url("bgsd1.jpg") ;
+                  }
+               #weathercontent{
+                   text-align: center;
+                   animation: zoomInDown 0.5s ;
+                   margin-top: 20px ;
+                   color: #BD8A16 ;
+                   font-family: courier ;
+               }
+
+                .row{
+                  text-align: center;
+                }
+                .input-group{
+                	width: 700px ;
+                }
+                  .csstyp{
+                  animation: fade 4s cubic-bezier(1,1.07,0.72,1.42) ;
+                  transform-origin: center bottom ;
+                  text-align: center;
+                  color: #1AA5D1 ;
+                }
+
+                  #mainbutton{
+                    margin-left: 400px ; 
+                    animation-name: slideInRight ;
+                    animation-duration: 0.6s ;
+                  }
+  
+                  #first {
+                      width: 300px;
+                      float: left;
+                      height: 200px;
+                          text-align: center;
+                          margin-left: 300px ;
+                  }
+                  #second {
+                      width: 300px;
+                      float: left;
+                      height: 200px;
+                      margin-left: 75px ;
+                      text-align: center;
+
+                  }
+                  #third{
+                    width: 300px;
+                    float: right;
+                    height: 200px ;
+                    text-align: center;
+
+                  }
+                  #clear {
+                      clear: all ;
+                  }
+
+                  #heading{
+                    animation-name: zoomIn ;
+                    animation-duration: 0.5s ;
+                    text-align: center;
+                    color: #D3471A ;
+                  }
+                  #inputbox{
+                    margin-left: 400px ;
+                    animation-name: slideInLeft ;
+                    animation-duration: 0.6s ;
+                  }
+
+                   #temprange{
+                    font-family: comic ;
+                    animation-name: fadeInLeftBig ;
+                    animation-duration: 1.5s ;
+                    color: #BD8A16 ;
+
+                  }
+                  #sunrange{
+                      font-family: comic ;
+                  animation-name: fadeInUpBig ;
+                  animation-duration: 1.5s ;
+                  color: #BD8A16 ;
+
+                  }
+                  #windrange{
+                      font-family: comic ;
+                    animation-name: fadeInRightBig ;
+                    animation-duration: 1.5s ;
+                    color: #BD8A16 ;
+                  }
+                  #cityname{
+                      font-family: comic ;
+                    font-size: 25px ;
+                  }
+                  #midhd{
+                    color: #1AA5D1 ;
+                  }
+                  .tshow{
+                    animation-name: flash ;
+                    animation-duration: 1.5s ;
+                    animation-iteration-count: infinite;
+                  }
+
+                  /*Animations Codes */ 
+
+                     @keyframes fade {
+                  from{
+                    opacity: 0 ;
+                    transform: scale3d(.75,.75,1);
+                  }
+                  to{
+                    opacity: 1 ;
+                    transform: scale3d(1,1,1);
+                  }
+                }
+
+                 @keyframes zoomInDown {
+                from {
+                  opacity: 0;
+                  transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0);
+                  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+                }
+
+                60% {
+                  opacity: 1;
+                  transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
+                  animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+                }
+              }
+
+                  @keyframes flash {
+                    from, 50%, to {
+                      opacity: 1;
+                    }
+
+                    25%, 75% {
+                      opacity: 0;
+                    }
+                  }
+
+                  @keyframes fadeInRightBig {
+                    from {
+                      opacity: 0;
+                      transform: translate3d(2000px, 0, 0);
+                    }
+
+                    to {
+                      opacity: 1;
+                      transform: none;
+                    }
+                  }
+
+                  @keyframes fadeInUpBig {
+                    from {
+                      opacity: 0;
+                      transform: translate3d(0, 2000px, 0);
+                    }
+
+                    to {
+                      opacity: 1;
+                      transform: none;
+                    }
+                  }
+
+                  @keyframes fadeInLeftBig {
+                    from {
+                      opacity: 0;
+                      transform: translate3d(-2000px, 0, 0);
+                    }
+
+                    to {
+                      opacity: 1;
+                      transform: none;
+                    }
+                  }
+
+                  @keyframes slideInLeft {
+                    from {
+                      transform: translate3d(-100%, 0, 0);
+                      visibility: visible;
+                    }
+
+                    to {
+                      transform: translate3d(0, 0, 0);
+                    }
+                  }
+
+                  @keyframes zoomIn {
+                    from {
+                      opacity: 0;
+                      transform: scale3d(.3, .3, .3);
+                    }
+
+                    50% {
+                      opacity: 1;
+                    }
+                  }
+
+                  @keyframes slideInRight {
+                    from {
+                      transform: translate3d(100%, 0, 0);
+                      visibility: visible;
+                    }
+
+                    to {
+                      transform: translate3d(0, 0, 0);
+                    }
+                  }
+
+
